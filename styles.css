@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow: auto;
 }
 
 header {
@@ -13,7 +12,6 @@ header {
 #content {
   width: 80vw;
   margin: auto;
-  overflow: auto;
 }
 
 #title {
@@ -38,7 +36,6 @@ header {
   justify-content: center;
   align-items: center;
   height: 100%;
-  overflow: auto;
   border-bottom: 1px solid black;
 }
 
