@@ -1,0 +1,44 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+#content {
+  width: 80vw;
+  margin: auto;
+  overflow: auto;
+}
+
+#title {
+  font-family: Nunito Sans, arial, sans-serif;
+  font-weight: normal;
+}
+
+#logo {
+  width: 20vw;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.mw-parser-output {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: auto;
+  border-bottom: 1px solid black;
+}
+
