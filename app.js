@@ -30,29 +30,30 @@ $(document).ready(() => {
     $('.infobox:odd').css('order', 2);
   };
 
-  const apiCall = (publication) => {
-    return new Promise((resolve, reject) => {
-      const url = `https://en.wikipedia.org/w/api.php?format=json&page=${publication}&action=parse&section=0`;
-      $.ajax({
-        url,
-        type: 'GET',
-        dataType: 'jsonp',
-        contentType: 'application/json; charset=utf-8',
-        success(res) {
-          resolve(res);
-        },
-        error(res) {
-          reject(res);
-        }
+  const apiCall = publication => new Promise((resolve, reject) => {
+    const url = `https://en.wikipedia.org/w/api.php?format=json&page=${publication}&action=parse&section=0`;
+    $.ajax({
+      url,
+      type: 'GET',
+      dataType: 'jsonp',
+      contentType: 'application/json; charset=utf-8',
+      success(res) {
+        resolve(res);
+      },
+      error() {
+        const message = `Error finding ${publication}`;
+        reject(message);
+      },
+    });
+  });
+  const promises = publications.map(publication => apiCall(publication));
+  Promise.all(promises)
+    .then((responses) => {
+      responses.forEach((response) => {
+        renderPublications(response);
       });
     })
-  };
-  let promises = publications.map((publication) => {
-    return apiCall(publication);
-  })
-  Promise.all(promises).then((responses) => {
-    responses.forEach((response) => {
-      renderPublications(response);
-    })
-  })
+    .catch((err) => {
+      console.log(err);
+    });
 });
